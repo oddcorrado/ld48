@@ -27,14 +27,14 @@ public class CellManager : MonoBehaviour
     {
         string[] lines = content.Split('\n');
         int maxRow = lines.Length;
-        int maxColumn = lines[0].Split(',').Length;
+        int maxColumn = lines[0].Split('\t').Length;
 
         cells = new Cell[maxColumn, maxRow];
 
         for (int rowIndex = 0; rowIndex < lines.Length; rowIndex++)
         {
             int y = lines.Length - 1 - rowIndex;
-            string[] objects = lines[rowIndex].Split(',');
+            string[] objects = lines[rowIndex].Split('\t');
 
             if (objects.Length != maxColumn) Debug.LogError($"row {rowIndex} size is not correct {objects.Length} instead of {maxColumn}");
 
