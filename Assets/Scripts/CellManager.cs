@@ -106,8 +106,10 @@ public class CellManager : MonoBehaviour
         newCells.ForEach(cell =>
         {
             cell.ContainsRoot = true;
-            var marker = Instantiate(markerPrefab);
-            marker.transform.position = cell.transform.position;
+            // var marker = Instantiate(markerPrefab);
+            // marker.transform.position = cell.transform.position + new Vector3(0, 0, -1);
+            cell.PreviousPosition = Cell.RootDirection.Up;
+            cell.Direction = Cell.RootDirection.Down;
         });
     }
 
