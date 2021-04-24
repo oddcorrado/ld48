@@ -101,16 +101,13 @@ public class CellManager : MonoBehaviour
         return MoveOutcome.NONE;
     }
 
-    void ProcessRoots(List<Cell> newCells)
+    void ProcessRoot(Cell newCell, Cell oldCell, Cell.RootDirection previousPosition, Cell.RootDirection direction)
     {
-        newCells.ForEach(cell =>
-        {
-            cell.ContainsRoot = true;
-            // var marker = Instantiate(markerPrefab);
-            // marker.transform.position = cell.transform.position + new Vector3(0, 0, -1);
-            cell.PreviousPosition = Cell.RootDirection.Up;
-            cell.Direction = Cell.RootDirection.Down;
-        });
+        Debug.Log($"{oldCell.name} {previousPosition} {direction}");
+
+        newCell.PreviousPosition = previousPosition;
+        oldCell.Direction = direction;
+        newCell.ContainsRoot = true;
     }
 
     public MoveOutcome ExecuteMove(Move move)
@@ -119,10 +116,22 @@ public class CellManager : MonoBehaviour
         List<Cell> newCells = new List<Cell>();
         List<Cell> oldCells = new List<Cell>();
 
+        Cell.RootDirection direction = Cell.RootDirection.Up;
+
+        switch (move)
+        {
+            case Move.UP: direction = Cell.RootDirection.Up; break;
+            case Move.DOWN: direction = Cell.RootDirection.Down; break;
+            case Move.RIGHT: direction = Cell.RootDirection.Right; break;
+            case Move.LEFT: direction = Cell.RootDirection.Left; break;
+        }
+
         activeCells.ForEach(cell =>
         {
             int newX = Mathf.RoundToInt(cell.transform.position.x); // TODO store X/Y in cell
-            int newY = Mathf.RoundToInt(cell.transform.position.y); // TODO store X/Y in cell 
+            int newY = Mathf.RoundToInt(cell.transform.position.y); // TODO store X/Y in cell
+            Cell.RootDirection previousPosition = Cell.RootDirection.Up;
+
             switch (move)
             {
                 case Move.UP: newY++; break;
@@ -131,13 +140,18 @@ public class CellManager : MonoBehaviour
                 case Move.LEFT: newX--; break;
             }
 
+            if (newY < cell.transform.position.y) previousPosition = Cell.RootDirection.Up;
+            if (newY > cell.transform.position.y) previousPosition = Cell.RootDirection.Down;
+            if (newX < cell.transform.position.x) previousPosition = Cell.RootDirection.Right;
+            if (newX > cell.transform.position.x) previousPosition = Cell.RootDirection.Left;
+
             var cellOutcome = CheckCell(newX, newY);
 
             switch (cellOutcome)
             {
                 case MoveOutcome.NONE: oldCells.Add(cell); break;
                 case MoveOutcome.DEATH: outcome = MoveOutcome.DEATH; break;
-                case MoveOutcome.OK: newCells.Add(cells[newX, newY]); break;
+                case MoveOutcome.OK: ProcessRoot(cells[newX, newY], cell, previousPosition, direction); newCells.Add(cells[newX, newY]); break;
                 case MoveOutcome.WATER: /* newCells.Add(cells[newX, newY]); */ waterCount--; break;
             }
         });
@@ -148,10 +162,10 @@ public class CellManager : MonoBehaviour
             return MoveOutcome.DEATH;
         }
 
-        ProcessRoots(newCells);
-
         activeCells = oldCells;
         newCells.ForEach(cell => activeCells.Add(cell));
+
+        // ProcessRoot(newCells, direction);
 
         if (waterCount <= 0)
         {

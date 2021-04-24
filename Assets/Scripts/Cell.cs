@@ -9,9 +9,12 @@ public class Cell : MonoBehaviour
     [SerializeField] private SpriteRenderer rootSprite;
     [SerializeField] private Sprite[] rootStraights;
     [SerializeField] private Sprite[] rootAngles;
+    [SerializeField] private Sprite rootEdgePreviousLeft;
+    [SerializeField] private Sprite rootEdgePreviousRight;
+    [SerializeField] private Sprite rootEdgePreviousUp;
+    [SerializeField] private Sprite rootEdgePreviousDown;
     public enum BackType { Earth, Water, Poison, Rock }
     public enum RootDirection { Up, Down, Left, Right }
-    public bool ContainsRoot { get; set; }
     /*1 = straight up
      *2 = straight side
      *3 = up right
@@ -20,7 +23,22 @@ public class Cell : MonoBehaviour
      *6 = down left
      */
 
-
+    private bool containsRoot = false;
+    public bool ContainsRoot
+    {
+        get { return containsRoot; }
+        set
+        {
+            containsRoot = value;
+            switch (PreviousPosition)
+            {
+                case RootDirection.Up: rootSprite.sprite = rootEdgePreviousUp; break;
+                case RootDirection.Down: rootSprite.sprite = rootEdgePreviousDown; break;
+                case RootDirection.Left: rootSprite.sprite = rootEdgePreviousLeft; break;
+                case RootDirection.Right: rootSprite.sprite = rootEdgePreviousRight; break;
+            }
+        }
+    }
     private BackType back;
     public BackType Back
     {
@@ -38,47 +56,48 @@ public class Cell : MonoBehaviour
             {
 
                 case (RootDirection.Up, RootDirection.Down):
-                    rootSprite.sprite = rootStraights[1];
-
+                    rootSprite.sprite = rootStraights[Random.Range(0, rootStraights.Length)];
+                    rootSprite.transform.localRotation = Quaternion.Euler(0, 0, 90);
                     break;
                 case (RootDirection.Up, RootDirection.Right):
-                    rootSprite.sprite = rootAngles[0];
+                    rootSprite.sprite = rootAngles[Random.Range(0, rootAngles.Length)];
                     rootSprite.transform.localRotation = Quaternion.Euler(0, 0, 90);
 
                     break;
                 case (RootDirection.Up, RootDirection.Left):
-                    rootSprite.sprite = rootAngles[0];
+                    rootSprite.sprite = rootAngles[Random.Range(0, rootAngles.Length)];
                     rootSprite.transform.localRotation = Quaternion.Euler(0, 180, 90);
 
                     break;
                 case (RootDirection.Down, RootDirection.Up):
-                    rootSprite.sprite = rootStraights[1];
+                    rootSprite.sprite = rootStraights[Random.Range(0, rootStraights.Length)];
+                    rootSprite.transform.localRotation = Quaternion.Euler(0, 0, 90);
 
                     break;
                 case (RootDirection.Down, RootDirection.Right):
-                    rootSprite.sprite = rootAngles[0];
+                    rootSprite.sprite = rootAngles[Random.Range(0, rootAngles.Length)];
 
                     break;
                 case (RootDirection.Down, RootDirection.Left):
-                    rootSprite.sprite = rootAngles[0];
+                    rootSprite.sprite = rootAngles[Random.Range(0, rootAngles.Length)];
                     rootSprite.transform.localRotation = Quaternion.Euler(0, 180, 0);
 
                     break;
                 case (RootDirection.Right, RootDirection.Up):
-                    rootSprite.sprite = rootAngles[1];
+                    rootSprite.sprite = rootAngles[Random.Range(0, rootAngles.Length)];
                     rootSprite.transform.localRotation = Quaternion.Euler(0, 0, 90);
 
                     break;
                 case (RootDirection.Right, RootDirection.Down):
-                    rootSprite.sprite = rootAngles[1];
+                    rootSprite.sprite = rootAngles[Random.Range(0, rootAngles.Length)];
 
                     break;
                 case (RootDirection.Right, RootDirection.Left):
-                    rootSprite.sprite = rootStraights[0];
+                    rootSprite.sprite = rootStraights[Random.Range(0, rootStraights.Length)];
 
                     break;
                 case (RootDirection.Left, RootDirection.Up):
-                    rootSprite.sprite = rootAngles[1];
+                    rootSprite.sprite = rootAngles[Random.Range(0, rootAngles.Length)];
                     rootSprite.transform.localRotation = Quaternion.Euler(0, 180, 90);
 
                     break;

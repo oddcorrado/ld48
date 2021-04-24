@@ -54,10 +54,14 @@ MonoBehaviour:
   rootSprite: {fileID: 6834161025575725106}
   rootStraights:
   - {fileID: 1255132992968651684, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
-  - {fileID: 3885551569053358290, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
+  - {fileID: 8277599635913044080, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
   rootAngles:
   - {fileID: -2616341708300357873, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
-  - {fileID: -4158928967824882854, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
+  - {fileID: 3118079498103454840, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
+  rootEdgePreviousLeft: {fileID: 392064586126333148, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
+  rootEdgePreviousRight: {fileID: 7623706857366698309, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
+  rootEdgePreviousUp: {fileID: 3056533225674258761, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
+  rootEdgePreviousDown: {fileID: -6940987702534708025, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
 --- !u!1 &2852322820923441084
 GameObject:
   m_ObjectHideFlags: 0
