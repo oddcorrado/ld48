@@ -17,10 +17,12 @@ public class CellManager : MonoBehaviour
     public enum Move { UP, DOWN, LEFT, RIGHT }
 
     private int waterCount = 0;
+    private int startX = -1;
 
     void Start()
     {
         CreateCells();
+        CheckRoots();
     }
 
     void CreateCells()
@@ -46,6 +48,50 @@ public class CellManager : MonoBehaviour
         }
     }
 
+    void CheckRoots()
+    {
+        int x = startX;
+        int y = cells.GetLength(1) - 1;
+        CheckCellNeighbours(x, y, Cell.RootDirection.Up);
+    }
+
+    int cnt = 20;
+
+    void CheckCellNeighbours(int x, int y, Cell.RootDirection previousPosition)
+    {
+        if (cnt-- <= 0) return;
+
+        
+        if (x < 0 || x >= cells.GetLength(0) || y < 0 || y >= cells.GetLength(1)) return;
+
+        var cell = cells[x, y];
+
+        if (cell.InitDone) return;
+
+        cell.InitDone = true;
+        cell.PreviousPosition = previousPosition;
+        if(x > 0 && cells[x - 1, y].ContainsRoot)
+        {
+            cell.Direction = Cell.RootDirection.Left;
+            CheckCellNeighbours(x - 1, y, Cell.RootDirection.Right);
+        }
+        if (x < cells.GetLength(0) - 1 && cells[x + 1, y].ContainsRoot)
+        {
+            cell.Direction = Cell.RootDirection.Right;
+            CheckCellNeighbours(x + 1, y, Cell.RootDirection.Left);
+        }
+        if (y > 0 && cells[x, y - 1].ContainsRoot)
+        {
+            cell.Direction = Cell.RootDirection.Down;
+            CheckCellNeighbours(x, y - 1, Cell.RootDirection.Up);
+        }
+        if (y < cells.GetLength(1) - 1 && cells[x, y + 1].ContainsRoot)
+        {
+            cell.Direction = Cell.RootDirection.Up;
+            CheckCellNeighbours(x, y + 1, Cell.RootDirection.Down);
+        }
+    }
+
     void CreateCell(int x, int y, string code)
     {
         var go = Instantiate(prefab);
@@ -59,11 +105,16 @@ public class CellManager : MonoBehaviour
             goCell.Back = Cell.BackType.Earth;
             go.name = $"EarthTree({x}-{y})";
             goCell.ContainsRoot = true;
-
-            var marker = Instantiate(markerPrefab);
-            marker.name = $"Marker({x}-{y})";
-            marker.transform.position = goCell.transform.position + new Vector3(0, 0, -1);
         }
+
+        if (code.Contains("A"))
+        {
+            goCell.Back = Cell.BackType.Earth;
+            go.name = $"StartRoot({x}-{y})";
+            goCell.ContainsRoot = true;
+            startX = x;
+        }
+
 
         if (code.Contains("S"))
         {
@@ -71,9 +122,9 @@ public class CellManager : MonoBehaviour
             go.name = $"EarthTree({x}-{y})";
             goCell.ContainsRoot = true;
 
-            var marker = Instantiate(markerPrefab);
+            /* var marker = Instantiate(markerPrefab);
             marker.name = $"Marker({x}-{y})";
-            marker.transform.position = goCell.transform.position + new Vector3(0, 0, -1);
+            marker.transform.position = goCell.transform.position + new Vector3(0, 0, -1); */
 
             activeCells.Add(goCell);
         }

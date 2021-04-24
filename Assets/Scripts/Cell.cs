@@ -23,6 +23,8 @@ public class Cell : MonoBehaviour
      *6 = down left
      */
 
+    public bool InitDone;
+
     private bool containsRoot = false;
     public bool ContainsRoot
     {
