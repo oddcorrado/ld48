@@ -20,7 +20,6 @@ public class Cell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Back = BackType.Earth;
     }
 
     // Update is called once per frame
