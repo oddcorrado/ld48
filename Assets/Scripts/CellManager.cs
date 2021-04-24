@@ -72,22 +72,22 @@ public class CellManager : MonoBehaviour
         cell.PreviousPosition = previousPosition;
         if(x > 0 && cells[x - 1, y].ContainsRoot)
         {
-            cell.Direction = Cell.RootDirection.Left;
+            cell.Direction = new Cell.RootDirection[] { Cell.RootDirection.Left };
             CheckCellNeighbours(x - 1, y, Cell.RootDirection.Right);
         }
         if (x < cells.GetLength(0) - 1 && cells[x + 1, y].ContainsRoot)
         {
-            cell.Direction = Cell.RootDirection.Right;
+            cell.Direction = new Cell.RootDirection[] { Cell.RootDirection.Right };
             CheckCellNeighbours(x + 1, y, Cell.RootDirection.Left);
         }
         if (y > 0 && cells[x, y - 1].ContainsRoot)
         {
-            cell.Direction = Cell.RootDirection.Down;
+            cell.Direction = new Cell.RootDirection[] { Cell.RootDirection.Down };
             CheckCellNeighbours(x, y - 1, Cell.RootDirection.Up);
         }
         if (y < cells.GetLength(1) - 1 && cells[x, y + 1].ContainsRoot)
         {
-            cell.Direction = Cell.RootDirection.Up;
+            cell.Direction = new Cell.RootDirection[] { Cell.RootDirection.Up };
             CheckCellNeighbours(x, y + 1, Cell.RootDirection.Down);
         }
     }
@@ -157,7 +157,7 @@ public class CellManager : MonoBehaviour
         Debug.Log($"{oldCell.name} {previousPosition} {direction}");
 
         newCell.PreviousPosition = previousPosition;
-        oldCell.Direction = direction;
+        oldCell.Direction = new Cell.RootDirection[] { direction };
         newCell.ContainsRoot = true;
     }
 
