@@ -8,7 +8,7 @@ public class Cell : MonoBehaviour
     [SerializeField] private SpriteRenderer backgroundSprite;
     public enum BackType { Earth, Water, Poison, Rock }
     public enum RootDirection { Up, Down, Left, Right }
-
+    public bool ContainsRoot { get; set; }
 
     private BackType back;
     public BackType Back

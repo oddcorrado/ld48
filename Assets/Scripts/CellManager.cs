@@ -7,6 +7,7 @@ public class CellManager : MonoBehaviour
     [TextArea(20,40)]
     [SerializeField] string content;
     [SerializeField] GameObject prefab;
+    [SerializeField] GameObject markerPrefab;
 
     Cell[,] cells;
 
@@ -53,7 +54,30 @@ public class CellManager : MonoBehaviour
 
         var goCell = go.GetComponent<Cell>();
         if (code.Contains("E")) { goCell.Back = Cell.BackType.Earth; go.name = $"Earth({x}-{y})"; }
-        if (code.Contains("T")) { goCell.Back = Cell.BackType.Earth; go.name = $"EarthTree({x}-{y})"; }
+        if (code.Contains("T"))
+        {
+            goCell.Back = Cell.BackType.Earth;
+            go.name = $"EarthTree({x}-{y})";
+            goCell.ContainsRoot = true;
+
+            var marker = Instantiate(markerPrefab);
+            marker.name = $"Marker({x}-{y})";
+            marker.transform.position = goCell.transform.position + new Vector3(0, 0, -1);
+        }
+
+        if (code.Contains("S"))
+        {
+            goCell.Back = Cell.BackType.Earth;
+            go.name = $"EarthTree({x}-{y})";
+            goCell.ContainsRoot = true;
+
+            var marker = Instantiate(markerPrefab);
+            marker.name = $"Marker({x}-{y})";
+            marker.transform.position = goCell.transform.position + new Vector3(0, 0, -1);
+
+            activeCells.Add(goCell);
+        }
+
         if (code.Contains("R")) { goCell.Back = Cell.BackType.Rock; go.name = $"Rock({x}-{y})"; }
         if (code.Contains("W")) { goCell.Back = Cell.BackType.Water; go.name = $"Water({x}-{y})"; waterCount++; }
         if (code.Contains("P")) { goCell.Back = Cell.BackType.Poison; go.name = $"Poison({x}-{y})"; }
@@ -65,7 +89,9 @@ public class CellManager : MonoBehaviour
     {
         if (x < 0 || x >= cells.GetLength(0) || y < 0 || y >= cells.GetLength(1)) return MoveOutcome.NONE;
 
-        switch(cells[x, y].Back)
+        if (cells[x, y].ContainsRoot) { return MoveOutcome.NONE; }
+
+        switch (cells[x, y].Back)
         {
             case (Cell.BackType.Rock): return MoveOutcome.NONE;
             case (Cell.BackType.Earth): return MoveOutcome.OK;
@@ -75,10 +101,21 @@ public class CellManager : MonoBehaviour
         return MoveOutcome.NONE;
     }
 
+    void ProcessRoots(List<Cell> newCells)
+    {
+        newCells.ForEach(cell =>
+        {
+            cell.ContainsRoot = true;
+            var marker = Instantiate(markerPrefab);
+            marker.transform.position = cell.transform.position;
+        });
+    }
+
     public MoveOutcome ExecuteMove(Move move)
     {
         MoveOutcome outcome = MoveOutcome.OK;
         List<Cell> newCells = new List<Cell>();
+        List<Cell> oldCells = new List<Cell>();
 
         activeCells.ForEach(cell =>
         {
@@ -96,19 +133,38 @@ public class CellManager : MonoBehaviour
 
             switch (cellOutcome)
             {
-                case MoveOutcome.NONE: newCells.Add(cell); break;
+                case MoveOutcome.NONE: oldCells.Add(cell); break;
                 case MoveOutcome.DEATH: outcome = MoveOutcome.DEATH; break;
                 case MoveOutcome.OK: newCells.Add(cells[newX, newY]); break;
-                case MoveOutcome.WATER: waterCount--; break;
+                case MoveOutcome.WATER: /* newCells.Add(cells[newX, newY]); */ waterCount--; break;
             }
         });
 
-        if (outcome == MoveOutcome.DEATH) return MoveOutcome.DEATH;
+        if (outcome == MoveOutcome.DEATH)
+        {
+            Debug.Log("YOU DIE");
+            return MoveOutcome.DEATH;
+        }
 
-        activeCells = newCells;
+        ProcessRoots(newCells);
 
-        if (waterCount <= 0) outcome = MoveOutcome.WIN;
-        
+        activeCells = oldCells;
+        newCells.ForEach(cell => activeCells.Add(cell));
+
+        if (waterCount <= 0)
+        {
+            Debug.Log("YOU WIN");
+            return MoveOutcome.WIN;
+        }
+
         return outcome;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow)) ExecuteMove(Move.UP);
+        if (Input.GetKeyDown(KeyCode.DownArrow)) ExecuteMove(Move.DOWN);
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) ExecuteMove(Move.LEFT);
+        if (Input.GetKeyDown(KeyCode.RightArrow)) ExecuteMove(Move.RIGHT);
     }
 }

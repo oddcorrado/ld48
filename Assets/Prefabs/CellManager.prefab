@@ -47,11 +47,11 @@ MonoBehaviour:
 
     E,E,E,E,E,E,E,E,E,E,T,E,E,E,E,E,E,E,E,E
 
-    E,E,E,E,E,E,E,T,T,T,T,T,T,T,E,E,E,E,E,E
+    E,E,E,E,E,E,E,S,T,T,T,T,T,S,E,E,E,E,E,E
 
     E,E,E,E,E,E,E,E,E,E,T,E,E,E,E,E,E,E,E,E
 
-    E,E,E,E,E,E,E,E,E,E,T,E,E,E,E,E,E,E,E,E
+    E,E,E,E,E,E,E,E,E,E,S,E,E,E,E,E,E,E,E,E
 
     E,E,E,E,E,E,P,E,E,E,E,E,E,E,E,E,E,E,E,E
 
@@ -83,3 +83,4 @@ MonoBehaviour:
 
     E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E'
   prefab: {fileID: 909225021522922772, guid: a56d2f283b6cf436ebe965a91942356c, type: 3}
+  markerPrefab: {fileID: 7124061496463741950, guid: 2c01273bcfb524ec887e43226247c9b4, type: 3}

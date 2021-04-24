@@ -223,17 +223,21 @@ PrefabInstance:
 
         E,E,E,E,E,E,E,E,E,E,T,E,E,E,E,E,E,E,E,E
 
-        E,E,E,E,E,E,E,T,T,T,T,T,T,T,E,E,E,E,E,E
+        E,E,E,E,E,E,E,S,T,T,T,T,T,S,E,E,E,E,E,E
 
         E,E,E,E,E,E,E,E,E,E,T,E,E,E,E,E,E,E,E,E
 
-        E,E,E,E,E,E,E,E,E,E,T,E,E,E,E,E,E,E,E,E
+        E,E,E,E,E,E,E,E,E,E,S,E,E,E,E,E,E,E,E,E
 
         E,E,E,E,E,E,P,E,E,E,E,E,E,E,E,E,E,E,E,E
 
         E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,P,E,E,E,E
 
+        E,E,W,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E
+
         E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E
+
+        E,E,W,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E
 
         E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E
 
@@ -241,11 +245,7 @@ PrefabInstance:
 
         E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E
 
-        E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E
-
-        E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E
-
-        E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E
+        E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,W,E,E
 
         E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E
 
