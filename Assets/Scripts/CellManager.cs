@@ -8,6 +8,7 @@ public class CellManager : MonoBehaviour
     [SerializeField] string content;
     [SerializeField] GameObject prefab;
     [SerializeField] GameObject markerPrefab;
+    [SerializeField] bool creatorMode;
 
     Cell[,] cells;
 
@@ -21,6 +22,28 @@ public class CellManager : MonoBehaviour
 
     void Start()
     {
+        if(!creatorMode)
+        {
+            CreateCells();
+            CheckRoots();
+        }
+    }
+
+    public void NewCells(string newContent)
+    {
+        content = newContent;
+        Restart();
+    }
+
+    public void Restart()
+    {
+        int childCount = transform.childCount;
+
+        for (int i = childCount - 1; i >= 0; i--) Destroy(transform.GetChild(i).gameObject);
+
+        waterCount = 0;
+        startX = -1;
+        activeCells = new List<Cell>();
         CreateCells();
         CheckRoots();
     }
@@ -55,13 +78,8 @@ public class CellManager : MonoBehaviour
         CheckCellNeighbours(x, y, Cell.RootDirection.Up);
     }
 
-    int cnt = 20;
-
     void CheckCellNeighbours(int x, int y, Cell.RootDirection previousPosition)
-    {
-        if (cnt-- <= 0) return;
-
-        
+    {   
         if (x < 0 || x >= cells.GetLength(0) || y < 0 || y >= cells.GetLength(1)) return;
 
         var cell = cells[x, y];
@@ -70,6 +88,7 @@ public class CellManager : MonoBehaviour
 
         cell.InitDone = true;
         cell.PreviousPosition = previousPosition;
+
         if(x > 0 && cells[x - 1, y].ContainsRoot)
         {
             cell.Direction = new Cell.RootDirection[] { Cell.RootDirection.Left };
