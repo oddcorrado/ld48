@@ -141,6 +141,7 @@ public class CellManager : MonoBehaviour
         }
 
         cell.Direction = directions.ToArray();
+        cell.CheckEdge();
         // Debug.Log($"directions: {directions.Count}");
     }
 

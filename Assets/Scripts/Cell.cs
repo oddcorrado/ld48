@@ -37,6 +37,7 @@ public class Cell : MonoBehaviour
 
     public bool InitDone;
 
+
     private bool containsRoot = false;
     public bool ContainsRoot
     {
@@ -96,6 +97,23 @@ public class Cell : MonoBehaviour
     {
 
     }
+
+    public void CheckEdge()
+    {
+        if(Direction.Length < 1)
+        {
+            int rotation = 0;
+            switch (PreviousPosition)
+            {
+                case RootDirection.Up: rotation = 0; rootSprite.sprite = rootEdge; break;
+                case RootDirection.Down: rotation = 180; rootSprite.sprite = rootEdge; break;
+                case RootDirection.Left: rotation = 90; rootSprite.sprite = rootEdge; break;
+                case RootDirection.Right: rotation = 270; rootSprite.sprite = rootEdge; break;
+            }
+            rootSprite.transform.localRotation = Quaternion.Euler(0, 0, rotation);
+        }
+    }
+
 
     void ProcessDirectionSingle()
     {
