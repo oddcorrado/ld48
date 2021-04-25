@@ -17,12 +17,17 @@ public class CellManager : MonoBehaviour
     [SerializeField] GameObject fxEarth;
     [SerializeField] GameObject topBackground;
     [SerializeField] TMP_Text tutorialText;
+    [SerializeField] AudioSource soundWin;
+    [SerializeField] AudioSource soundLose;
+    [SerializeField] AudioSource soundInvert;
+    [SerializeField] AudioSource soundWater;
+    [SerializeField] Transform level;
 
     Cell[,] cells;
 
     List<Cell> activeCells = new List<Cell>();
 
-    public enum MoveOutcome { DEATH, OK, WIN, WATER, NONE }
+    public enum MoveOutcome { DEATH, OK, OK_INVERT, WIN, WATER, NONE }
     public enum Move { UP, DOWN, LEFT, RIGHT }
 
     private int waterCount = 0;
@@ -57,9 +62,9 @@ public class CellManager : MonoBehaviour
     public void Restart()
     {
         gameOver = false;
-        int childCount = transform.childCount;
+        int childCount = level.childCount;
 
-        for (int i = childCount - 1; i >= 0; i--) Destroy(transform.GetChild(i).gameObject);
+        for (int i = childCount - 1; i >= 0; i--) Destroy(level.GetChild(i).gameObject);
 
         waterCount = 0;
         startX = -1;
@@ -149,7 +154,7 @@ public class CellManager : MonoBehaviour
     {
         var go = Instantiate(prefab);
         go.transform.position = new Vector3(x, y, 0);
-        go.transform.SetParent(gameObject.transform);
+        go.transform.SetParent(level);
 
         var goCell = go.GetComponent<Cell>();
         if (code.Contains("E")) { goCell.Back = Cell.BackType.Earth; go.name = $"Earth({x}-{y})"; }
@@ -183,6 +188,7 @@ public class CellManager : MonoBehaviour
         }
 
         if (code.Contains("R")) { goCell.Back = Cell.BackType.Rock; go.name = $"Rock({x}-{y})"; }
+        if (code.Contains("I")) { goCell.Back = Cell.BackType.Inverter; go.name = $"Invert({x}-{y})"; }
         if (code.Contains("W")) { goCell.Back = Cell.BackType.Water; go.name = $"Water({x}-{y})"; waterCount++; }
         if (code.Contains("P")) { goCell.Back = Cell.BackType.Poison; go.name = $"Poison({x}-{y})"; }
 
@@ -201,6 +207,7 @@ public class CellManager : MonoBehaviour
             case (Cell.BackType.Earth): return MoveOutcome.OK;
             case (Cell.BackType.Water): return MoveOutcome.WATER;
             case (Cell.BackType.Poison): return MoveOutcome.DEATH;
+            case (Cell.BackType.Inverter): return MoveOutcome.OK_INVERT;
         }
         return MoveOutcome.NONE;
     }
@@ -242,14 +249,33 @@ public class CellManager : MonoBehaviour
             int newX = Mathf.RoundToInt(cell.transform.position.x); // TODO store X/Y in cell
             int newY = Mathf.RoundToInt(cell.transform.position.y); // TODO store X/Y in cell
             Cell.RootDirection previousPosition = Cell.RootDirection.Up;
+            var cellDirection = direction;
+            var cellMove = move;
 
-            switch (move)
+            if (cell.IsInverted)
+            {
+                switch(direction)
+                {
+                    case Cell.RootDirection.Left: cellDirection = Cell.RootDirection.Right; break;
+                    case Cell.RootDirection.Right: cellDirection = Cell.RootDirection.Left; break;
+                }
+
+                switch(move)
+                {
+                    case Move.LEFT: cellMove = Move.RIGHT; break;
+                    case Move.RIGHT: cellMove = Move.LEFT; break;
+                }
+            }
+
+            switch (cellMove)
             {
                 case Move.UP: newY++; break;
                 case Move.DOWN: newY--; break;
                 case Move.RIGHT: newX++; break;
                 case Move.LEFT: newX--; break;
             }
+
+
 
             if (newY < cell.transform.position.y) previousPosition = Cell.RootDirection.Up;
             if (newY > cell.transform.position.y) previousPosition = Cell.RootDirection.Down;
@@ -265,18 +291,24 @@ public class CellManager : MonoBehaviour
                     AddFx(fxRock, new Vector3(cell.transform.position.x, cell.transform.position.y, -1));
                     break;
                 case MoveOutcome.DEATH:
-                    ProcessRoot(cells[newX, newY], cell, previousPosition, direction);
+                    ProcessRoot(cells[newX, newY], cell, previousPosition, cellDirection);
                     outcome = MoveOutcome.DEATH;
+                    soundLose.Play();
                     AddFx(fxDeath, new Vector3(newX, newY, -1), true);
                     break;
                 case MoveOutcome.OK:
-                    ProcessRoot(cells[newX, newY], cell, previousPosition, direction);
-                    AddFx(fxEarth, new Vector3(newX, newY, -1));
+                case MoveOutcome.OK_INVERT:
+                    ProcessRoot(cells[newX, newY], cell, previousPosition, cellDirection);
+                    AddFx(fxEarth, new Vector3(newX, newY, -2));
+                    if (cellOutcome == MoveOutcome.OK_INVERT) soundInvert.Play();
+                    if (cellOutcome == MoveOutcome.OK_INVERT) cells[newX, newY].IsInverted = !cell.IsInverted;
+                    else cells[newX, newY].IsInverted = cell.IsInverted;
                     newCells.Add(cells[newX, newY]);
                     break;
                 case MoveOutcome.WATER:
-                    ProcessRoot(cells[newX, newY], cell, previousPosition, direction);
-                    AddFx(fxWater, new Vector3(newX, newY, -1), true);
+                    ProcessRoot(cells[newX, newY], cell, previousPosition, cellDirection);
+                    AddFx(fxWater, new Vector3(newX, newY + 0.7f, -1), true);
+                    soundWater.Play();
                     /* newCells.Add(cells[newX, newY]); */
                     waterCount--;
                     break;
@@ -285,7 +317,7 @@ public class CellManager : MonoBehaviour
 
         if (outcome == MoveOutcome.DEATH)
         {
-            uiGame.Lose();
+            StartCoroutine(LoseSequence());
             gameOver = true;
             return MoveOutcome.DEATH;
         }
@@ -297,7 +329,7 @@ public class CellManager : MonoBehaviour
 
         if (waterCount <= 0)
         {
-            uiGame.Win();
+            StartCoroutine(WinSequence());
             gameOver = true;
             return MoveOutcome.WIN;
         }
@@ -330,6 +362,29 @@ public class CellManager : MonoBehaviour
         Camera.main.transform.position += new Vector3(0, distance, 0);
     }
 
+    IEnumerator WinSequence()
+    {
+        uiGame.Win(0);
+        tutorialText.text = "";
+        yield return new WaitForSeconds(0.5f);
+        soundWin.Play();
+
+        var endY = cells.GetLength(1) + 8;
+        while (Camera.main.transform.position.y < endY - 0.5f)
+        {
+            Camera.main.transform.position += new Vector3(0, (endY - Camera.main.transform.position.y) * 0.01f, 0);
+            yield return new WaitForEndOfFrame();
+        }
+
+        uiGame.Win(1);
+    }
+
+    IEnumerator LoseSequence()
+    {
+        yield return new WaitForSeconds(2);
+        uiGame.Lose();
+    }
+
     void Update()
     {
         if (gameOver) return;
@@ -339,7 +394,7 @@ public class CellManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow)) ExecuteMove(Move.RIGHT);
         if (Input.GetKey(KeyCode.U)) CameraControl(1 / 16f);
         if (Input.GetKey(KeyCode.D)) CameraControl(-1 / 16f);
-        if (Mathf.Abs(Input.mouseScrollDelta.y) > 0) CameraControl(Input.mouseScrollDelta.y * 0.1f);
+        if (Mathf.Abs(Input.mouseScrollDelta.y) > 0) CameraControl(Input.mouseScrollDelta.y * 0.2f);
 
         AdjustCamera();
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Cell : MonoBehaviour
 {
     [SerializeField] private Sprite[] backgroundSprites;
-    [SerializeField] private SpriteRenderer backgroundSprite;
+    [SerializeField] private GameObject[] backgrounds;
     [SerializeField] private SpriteRenderer rootSprite;
     [SerializeField] private Sprite[] rootStraights;
     [SerializeField] private Sprite[] rootAngles;
@@ -25,7 +25,7 @@ public class Cell : MonoBehaviour
     [SerializeField] private Sprite LeftDownRight;
     [SerializeField] private Sprite LeftUpRight;
 
-    public enum BackType { Earth, Water, Poison, Rock }
+    public enum BackType { Earth, Water, Poison, Rock, Inverter }
     public enum RootDirection { Up, Down, Left, Right }
     /*1 = straight up
      *2 = straight side
@@ -36,7 +36,7 @@ public class Cell : MonoBehaviour
      */
 
     public bool InitDone;
-
+    public bool IsInverted;
 
     private bool containsRoot = false;
     public bool ContainsRoot
@@ -60,7 +60,7 @@ public class Cell : MonoBehaviour
     public BackType Back
     {
         get { return back; }
-        set { back = value; backgroundSprite.sprite = backgroundSprites[(int)value]; }
+        set { back = value; backgrounds[(int)value].SetActive(true); }
     }
 
     private RootDirection[] directions;

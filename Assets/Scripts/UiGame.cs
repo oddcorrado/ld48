@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class UiGame : MonoBehaviour
 {
-    [SerializeField] GameObject winPanel;
+    [SerializeField] GameObject[] winPanels;
     [SerializeField] GameObject losePanel;
     [SerializeField] GameObject playPanel;
     [SerializeField] CellManager cellManager;
 
-    public void Win()
+    public void Win(int step)
     {
-        winPanel.SetActive(true);
+        winPanels[step].SetActive(true);
         playPanel.SetActive(false);
     }
 
@@ -24,7 +24,7 @@ public class UiGame : MonoBehaviour
     public void Restart()
     {
         losePanel.SetActive(false);
-        winPanel.SetActive(false);
+        foreach (var go in winPanels) go.SetActive(false);
         playPanel.SetActive(true);
         cellManager.Restart();
     }
