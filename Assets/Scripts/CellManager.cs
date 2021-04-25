@@ -14,6 +14,7 @@ public class CellManager : MonoBehaviour
     [SerializeField] GameObject fxWater;
     [SerializeField] GameObject fxRock;
     [SerializeField] GameObject fxEarth;
+    [SerializeField] GameObject topBackground;
 
     Cell[,] cells;
 
@@ -37,6 +38,7 @@ public class CellManager : MonoBehaviour
             if (content == "") content = LevelContent;
             CreateCells();
             CheckRoots();
+            CheckBackground();
         }
     }
 
@@ -58,6 +60,7 @@ public class CellManager : MonoBehaviour
         activeCells = new List<Cell>();
         CreateCells();
         CheckRoots();
+        CheckBackground();
         fxs.RemoveAll(go => { Destroy(go); return true; });
     }
 
@@ -90,6 +93,12 @@ public class CellManager : MonoBehaviour
         int y = cells.GetLength(1) - 1;
         CheckCellNeighbours(x, y, Cell.RootDirection.Up);
     }
+
+    void CheckBackground()
+    {
+        topBackground.transform.position = new Vector3(10, 10 + cells.GetLength(1) - 0.5f, 0);
+    }
+    
 
     void CheckCellNeighbours(int x, int y, Cell.RootDirection previousPosition)
     {   
@@ -291,7 +300,7 @@ public class CellManager : MonoBehaviour
 
     void AdjustCamera()
     {
-        if(cells.GetLength(1) > 20 && activeCells.Count > 0)
+        if(cells.GetLength(1) > 10 && activeCells.Count > 0)
         {
             var position = Camera.main.transform.position;
 
