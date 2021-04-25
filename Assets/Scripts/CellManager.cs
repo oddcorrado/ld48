@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class CellManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class CellManager : MonoBehaviour
     [SerializeField] GameObject fxRock;
     [SerializeField] GameObject fxEarth;
     [SerializeField] GameObject topBackground;
+    [SerializeField] TMP_Text tutorialText;
 
     Cell[,] cells;
 
@@ -29,13 +31,17 @@ public class CellManager : MonoBehaviour
 
     private List<GameObject> fxs = new List<GameObject>();
 
+    private bool playerCameraControl; 
+
     static public string LevelContent { get; set; }
+    static public string LevelTutorial { get; set; }
 
     void Start()
     {
         if(!creatorMode)
         {
             if (content == "") content = LevelContent;
+            tutorialText.text = LevelTutorial;
             CreateCells();
             CheckRoots();
             CheckBackground();
@@ -135,7 +141,7 @@ public class CellManager : MonoBehaviour
         }
 
         cell.Direction = directions.ToArray();
-        Debug.Log($"directions: {directions.Count}");
+        // Debug.Log($"directions: {directions.Count}");
     }
 
     void CreateCell(int x, int y, string code)
@@ -200,8 +206,6 @@ public class CellManager : MonoBehaviour
 
     void ProcessRoot(Cell newCell, Cell oldCell, Cell.RootDirection previousPosition, Cell.RootDirection direction)
     {
-        Debug.Log($"{oldCell.name} {previousPosition} {direction}");
-
         newCell.PreviousPosition = previousPosition;
         oldCell.Direction = new Cell.RootDirection[] { direction };
         newCell.ContainsRoot = true;
@@ -219,6 +223,8 @@ public class CellManager : MonoBehaviour
         MoveOutcome outcome = MoveOutcome.OK;
         List<Cell> newCells = new List<Cell>();
         List<Cell> oldCells = new List<Cell>();
+
+        playerCameraControl = false;
 
         Cell.RootDirection direction = Cell.RootDirection.Up;
 
@@ -300,7 +306,8 @@ public class CellManager : MonoBehaviour
 
     void AdjustCamera()
     {
-        if(cells.GetLength(1) > 10 && activeCells.Count > 0)
+        if (playerCameraControl) return;
+        if(activeCells.Count > 0)
         {
             var position = Camera.main.transform.position;
 
@@ -316,6 +323,12 @@ public class CellManager : MonoBehaviour
         }
     }
 
+    void CameraControl(float distance)
+    {
+        playerCameraControl = true;
+        Camera.main.transform.position += new Vector3(0, distance, 0);
+    }
+
     void Update()
     {
         if (gameOver) return;
@@ -323,6 +336,9 @@ public class CellManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow)) ExecuteMove(Move.DOWN);
         if (Input.GetKeyDown(KeyCode.LeftArrow)) ExecuteMove(Move.LEFT);
         if (Input.GetKeyDown(KeyCode.RightArrow)) ExecuteMove(Move.RIGHT);
+        if (Input.GetKey(KeyCode.U)) CameraControl(1 / 16f);
+        if (Input.GetKey(KeyCode.D)) CameraControl(-1 / 16f);
+        if (Mathf.Abs(Input.mouseScrollDelta.y) > 0) CameraControl(Input.mouseScrollDelta.y * 0.1f);
 
         AdjustCamera();
     }

@@ -418,7 +418,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3308290278280150963, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Name
-      value: UiLevelButton
+      value: UiLevelButton6
       objectReference: {fileID: 0}
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Pivot.x
@@ -503,6 +503,10 @@ PrefabInstance:
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744946739605395500, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
+      propertyPath: content
+      value: "E\tE\tE\tE\tE\tE\tE\tE\tE\tE\tA\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tP\tE\tE\tS\tT\tW\tT\tE\tE\tP\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tP\tE\tP\tW\tT\tT\tT\tT\tT\tS\tP\tE\tE\tE\tE\tE\nE\tE\tE\tE\tP\tE\tE\tE\tP\tP\tT\tE\tE\tE\tP\tP\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tS\tP\tE\tE\tE\tP\tE\tP\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tP\tE\tE\tE\tE\tE\tE\tP\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\tP\tP\tP\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\tE\tE\tE\tE\nP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tE\tP\tP\tP\nE\tW\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE"
       objectReference: {fileID: 0}
     - target: {fileID: 9125926062346811803, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_text
@@ -644,7 +648,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3308290278280150963, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Name
-      value: UiLevelButton
+      value: UiLevelButton3
       objectReference: {fileID: 0}
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Pivot.x
@@ -730,6 +734,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6744946739605395500, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
+      propertyPath: content
+      value: "E\tE\tE\tE\tE\tE\tE\tE\tE\tE\tA\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tS\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tP\tP\tP\tP\tP\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tP\tE\tP\tP\tP\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tP\tE\tP\tW\tP\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tP\tE\tE\tE\tP\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tP\tP\tP\tP\tP\tE\tE\tE\tE\tE\tE\tE\tE"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744946739605395500, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
+      propertyPath: tutorial
+      value: Poison kills, watch out !
+      objectReference: {fileID: 0}
     - target: {fileID: 9125926062346811803, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_text
       value: 3
@@ -750,7 +762,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3308290278280150963, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Name
-      value: UiLevelButton
+      value: UiLevelButton4
       objectReference: {fileID: 0}
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Pivot.x
@@ -835,6 +847,16 @@ PrefabInstance:
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744946739605395500, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
+      propertyPath: content
+      value: "E\tE\tE\tE\tE\tE\tE\tE\tE\tE\tA\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tS\tT\tT\tT\tT\tT\tS\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tS\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tW\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tR\tR\tR\tR\tR\tR\tR\tR\tR\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tR\tR\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tR\tR\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tW\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tR\tR\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tR\tR\tR\tR\tR\tR\tR\tR\tR\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tW\tE\tE\tE\tE\tE\tE\tE\tE\tE"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744946739605395500, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
+      propertyPath: tutorial
+      value: 'You can scroll with the mouse wheel
+
+        Or with U and D keys'
       objectReference: {fileID: 0}
     - target: {fileID: 9125926062346811803, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_text
@@ -1343,7 +1365,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3308290278280150963, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Name
-      value: UiLevelButton
+      value: UiLevelButton2
       objectReference: {fileID: 0}
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Pivot.x
@@ -1431,7 +1453,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6744946739605395500, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: content
-      value: "E\tE\tE\tE\tE\tE\tE\tE\tE\tE\tA\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tS\tT\tT\tT\tT\tT\tS\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tS\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tW\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tR\tR\tR\tR\tR\tR\tR\tR\tR\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tR\tR\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tR\tR\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tW\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tR\tR\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tR\tR\tR\tR\tR\tR\tR\tR\tR\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tW\tE\tE\tE\tE\tE\tE\tE\tE\tE"
+      value: "E\tE\tE\tE\tE\tE\tE\tE\tE\tE\tA\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tS\tT\tT\tT\tT\tT\tS\tE\tE\tW\tE\tE\tE\nR\tR\tR\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tW\tR\tE\tE\tE\tE\tE\tE\tE\tS\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tR\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tR\tE\tE\tE\tE\tE\tE\tR\tR\tR\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tR\tE\tE\tE\tE\tE\tE\tE\tW\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tR\tR\tR\tR\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744946739605395500, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
+      propertyPath: tutorial
+      value: 'You can''t dig into rocks
+
+        Hit restart if you are stuck'
       objectReference: {fileID: 0}
     - target: {fileID: 9125926062346811803, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_text
@@ -1455,6 +1483,7 @@ GameObject:
   - component: {fileID: 1919007063}
   - component: {fileID: 1919007062}
   - component: {fileID: 1919007061}
+  - component: {fileID: 1919007064}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1527,6 +1556,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1919007064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919007060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AssetsPPU: 32
+  m_RefResolutionX: 960
+  m_RefResolutionY: 600
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1001 &2035897201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1536,7 +1585,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3308290278280150963, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Name
-      value: UiLevelButton
+      value: UiLevelButton5
       objectReference: {fileID: 0}
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Pivot.x
@@ -1622,6 +1671,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6744946739605395500, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
+      propertyPath: content
+      value: "E\tE\tE\tE\tE\tE\tE\tE\tE\tE\tA\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tS\tT\tT\tT\tT\tT\tS\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tS\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tP\tP\tP\tP\tP\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tP\tP\tP\tP\tE\nE\tE\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tP\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tP\tE\tE\tE\tE\nE\tW\tE\tE\tP\tE\tE\tE\tP\tE\tE\tE\tR\tE\tE\tP\tE\tE\tE\tE\nE\tE\tE\tE\tP\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tP\tE\tW\tE\tE\nE\tE\tE\tE\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\tE\tE\tE\tE\nE\tE\tE\tE\tP\tP\tP\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tR\tR\tR\tR\tR\tE\tE\tE\tE\tE\nE\tE\tE\tE\tP\tP\tP\tP\tE\tE\tP\tE\tR\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tW\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE"
+      objectReference: {fileID: 0}
     - target: {fileID: 9125926062346811803, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_text
       value: 5
@@ -1642,7 +1695,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3308290278280150963, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Name
-      value: UiLevelButton
+      value: UiLevelButton10
       objectReference: {fileID: 0}
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Pivot.x
@@ -1728,6 +1781,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6744946739605395500, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
+      propertyPath: content
+      value: "E\tE\tE\tE\tE\tE\tE\tE\tE\tE\tA\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tS\tT\tT\tT\tT\tT\tS\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tS\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tP\tP\tP\tP\tP\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tP\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tP\nE\tE\tE\tE\tE\tE\tE\tE\tP\tE\tE\tE\tR\tE\tE\tE\tE\tP\tE\tP\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tP\nE\tE\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\tE\tE\tE\tE\tP\nE\tE\tE\tE\tE\tE\tE\tE\tR\tR\tR\tE\tR\tR\tR\tE\tE\tE\tE\tP\nE\tE\tE\tE\tP\tE\tE\tE\tR\tE\tP\tE\tR\tE\tE\tE\tE\tE\tE\tP\nE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tR\tE\tE\tE\tP\tE\tE\tP\nE\tP\tE\tE\tE\tE\tE\tE\tR\tE\tE\tP\tE\tE\tE\tE\tE\tE\tE\tP\nE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\nE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\nE\tE\tE\tP\tE\tE\tR\tR\tR\tE\tE\tE\tE\tE\tE\tE\tE\tR\tR\tP\nE\tE\tE\tE\tE\tR\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tP\nP\tP\tE\tP\tR\tR\tE\tE\tE\tE\tE\tE\tE\tE\tP\tE\tE\tE\tR\tP\nP\tP\tE\tP\tR\tR\tE\tE\tE\tE\tE\tE\tE\tP\tP\tP\tE\tE\tR\tP\nP\tP\tE\tP\tR\tR\tE\tE\tE\tE\tE\tE\tE\tR\tP\tE\tE\tE\tR\tP\nP\tP\tE\tP\tR\tR\tE\tE\tE\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\nP\tP\tE\tP\tR\tR\tE\tE\tP\tP\tP\tR\tE\tE\tE\tE\tE\tE\tE\tP\nP\tP\tE\tP\tR\tR\tE\tE\tE\tP\tE\tE\tE\tE\tE\tE\tP\tE\tE\tP\nP\tP\tE\tP\tR\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\tP\tP\tE\tP\nP\tP\tE\tP\tR\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\tR\tR\tP\nP\tP\tE\tP\tR\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\nP\tP\tE\tP\tR\tR\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\nP\tP\tE\tP\tP\tP\tE\tE\tE\tE\tP\tP\tP\tE\tE\tE\tE\tE\tE\tP\nP\tP\tE\tE\tE\tP\tE\tE\tE\tR\tP\tW\tP\tE\tE\tE\tE\tE\tE\tP\nP\tP\tP\tP\tE\tP\tE\tE\tE\tE\tP\tE\tP\tE\tE\tE\tE\tE\tE\tP\nP\tR\tR\tP\tE\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\tE\tE\tP\nP\tR\tR\tP\tE\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tP\nP\tR\tR\tP\tE\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tP\nP\tP\tP\tP\tE\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tW\tE\tP\tP\nP\tP\tW\tE\tE\tP\tE\tE\tE\tE\tE\tE\tE\tE\tP\tE\tE\tE\tE\tP\nP\tP\tP\tP\tP\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\tE\tE\tP\nP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tP\nP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tP\tP"
+      objectReference: {fileID: 0}
     - target: {fileID: 9125926062346811803, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_text
       value: 10
@@ -1753,7 +1810,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3308290278280150963, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Name
-      value: UiLevelButton
+      value: UiLevelButton1
       objectReference: {fileID: 0}
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Pivot.x
@@ -1841,7 +1898,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6744946739605395500, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: content
-      value: "E\tE\tE\tE\tE\tE\tE\tE\tE\tE\tA\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tS\tT\tT\tT\tT\tT\tS\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tS\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tP\tP\tP\tP\tP\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tP\tP\tP\tP\tE\nE\tE\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tP\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tP\tE\tE\tE\tE\nE\tW\tE\tE\tP\tE\tE\tE\tP\tE\tE\tE\tR\tE\tE\tP\tE\tE\tE\tE\nE\tE\tE\tE\tP\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tP\tE\tW\tE\tE\nE\tE\tE\tE\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\tE\tE\tE\tE\nE\tE\tE\tE\tP\tP\tP\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tP\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tR\tR\tR\tR\tR\tE\tE\tE\tE\tE\nE\tE\tE\tE\tP\tP\tP\tP\tE\tE\tP\tE\tR\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tR\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tP\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tW\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE"
+      value: "E\tE\tE\tE\tE\tE\tE\tE\tE\tE\tA\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tS\tT\tT\tT\tT\tT\tS\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tT\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tS\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tW\tE\tE\tW\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tW\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\nE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE\tE"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6744946739605395500, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
+      propertyPath: tutorial
+      value: 'Use arrow keys to move
+
+        Reach water to win'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
