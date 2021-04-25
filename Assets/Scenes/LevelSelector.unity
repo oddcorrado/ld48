@@ -202,7 +202,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3308290278280150963, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Name
-      value: UiLevelButton (6)
+      value: UiLevelButton
       objectReference: {fileID: 0}
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Pivot.x
@@ -418,7 +418,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3308290278280150963, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Name
-      value: UiLevelButton (5)
+      value: UiLevelButton
       objectReference: {fileID: 0}
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Pivot.x
@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 957169005}
   - component: {fileID: 957169009}
   m_Layer: 5
-  m_Name: Ui
+  m_Name: UiLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -643,7 +643,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3308290278280150963, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Name
-      value: UiLevelButton (2)
+      value: UiLevelButton
       objectReference: {fileID: 0}
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Pivot.x
@@ -749,7 +749,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3308290278280150963, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Name
-      value: UiLevelButton (3)
+      value: UiLevelButton
       objectReference: {fileID: 0}
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Pivot.x
@@ -1055,7 +1055,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3308290278280150963, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Name
-      value: UiLevelButton (7)
+      value: UiLevelButton
       objectReference: {fileID: 0}
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Pivot.x
@@ -1236,7 +1236,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3308290278280150963, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Name
-      value: UiLevelButton (8)
+      value: UiLevelButton
       objectReference: {fileID: 0}
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Pivot.x
@@ -1342,7 +1342,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3308290278280150963, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Name
-      value: UiLevelButton (1)
+      value: UiLevelButton
       objectReference: {fileID: 0}
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Pivot.x
@@ -1535,7 +1535,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3308290278280150963, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Name
-      value: UiLevelButton (4)
+      value: UiLevelButton
       objectReference: {fileID: 0}
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Pivot.x
@@ -1641,7 +1641,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3308290278280150963, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Name
-      value: UiLevelButton (9)
+      value: UiLevelButton
       objectReference: {fileID: 0}
     - target: {fileID: 5524208524198118317, guid: 2918c8c0156224c3d9218c2fe550b86b, type: 3}
       propertyPath: m_Pivot.x
