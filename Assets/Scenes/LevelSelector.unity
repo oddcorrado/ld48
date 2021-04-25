@@ -633,6 +633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winPanel: {fileID: 205255354}
   losePanel: {fileID: 0}
+  playPanel: {fileID: 0}
   cellManager: {fileID: 0}
 --- !u!1001 &1295645657
 PrefabInstance:
