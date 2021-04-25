@@ -47,21 +47,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundSprites:
   - {fileID: 21300000, guid: 455ff132e82614b51ac0592f20604e79, type: 3}
-  - {fileID: 21300000, guid: 10424f493aa2b4529bbb4fef8a1f54b0, type: 3}
-  - {fileID: 21300000, guid: 3769f388f3f4c4cddad6771139a9eb8c, type: 3}
+  - {fileID: 21300000, guid: 6c60d3e7d5db9d94bb532a2302bd3da3, type: 3}
+  - {fileID: 21300000, guid: c803131ccbf8381419d77b8fc5a8869e, type: 3}
   - {fileID: 21300000, guid: a942a441feb0a4dd28a4861bbf73137e, type: 3}
   backgroundSprite: {fileID: 3242031236731454576}
   rootSprite: {fileID: 6834161025575725106}
   rootStraights:
-  - {fileID: 1255132992968651684, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
-  - {fileID: 8277599635913044080, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
+  - {fileID: 2729774126298305322, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  - {fileID: 2729774126298305322, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
   rootAngles:
-  - {fileID: -2616341708300357873, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
-  - {fileID: 3118079498103454840, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
-  rootEdgePreviousLeft: {fileID: 392064586126333148, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
-  rootEdgePreviousRight: {fileID: 7623706857366698309, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
-  rootEdgePreviousUp: {fileID: 3056533225674258761, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
-  rootEdgePreviousDown: {fileID: -6940987702534708025, guid: 09a3af40e63ef564883aea5b0f51bd0d, type: 3}
+  - {fileID: 1109085756814764847, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  - {fileID: 1109085756814764847, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  rootEdgePreviousLeft: {fileID: -5248998044155407264, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  rootEdgePreviousRight: {fileID: -5248998044155407264, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  rootEdgePreviousUp: {fileID: -5248998044155407264, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  rootEdgePreviousDown: {fileID: -5248998044155407264, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  rootEdge3Directions: {fileID: 2478327579514269630, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  UpDownRight: {fileID: -2194401396416462952, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  UpDownLeft: {fileID: -2194401396416462952, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  UpRightLeft: {fileID: 3428965369781375683, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  DownUpRight: {fileID: 8354383957027902319, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  DownUpLeft: {fileID: -2194401396416462952, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  DownRightLeft: {fileID: -4680878598002664187, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  RightDownUp: {fileID: 8354383957027902319, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  RightDownLeft: {fileID: -4680878598002664187, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  RightUpLeft: {fileID: 3428965369781375683, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  LeftDownUp: {fileID: -2194401396416462952, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  LeftDownRight: {fileID: -4680878598002664187, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  LeftUpRight: {fileID: 3428965369781375683, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  InitDone: 0
 --- !u!1 &2852322820923441084
 GameObject:
   m_ObjectHideFlags: 0
