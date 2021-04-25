@@ -104,7 +104,7 @@ public class Cell : MonoBehaviour
 
             case (RootDirection.Up, RootDirection.Down):
                 rootSprite.sprite = rootStraights[Random.Range(0, rootStraights.Length)];
-                rootSprite.transform.localRotation = Quaternion.Euler(0, 0, 90);
+                rootSprite.transform.localRotation = Quaternion.Euler(0, 0, 270);
                 break;
             case (RootDirection.Up, RootDirection.Right):
                 rootSprite.sprite = rootAngles[0];
@@ -118,7 +118,7 @@ public class Cell : MonoBehaviour
                 break;
             case (RootDirection.Down, RootDirection.Up):
                 rootSprite.sprite = rootStraights[Random.Range(0, rootStraights.Length)];
-                rootSprite.transform.localRotation = Quaternion.Euler(0, 0, 90);
+                rootSprite.transform.localRotation = Quaternion.Euler(0, 0, 270);
 
                 break;
             case (RootDirection.Down, RootDirection.Right):
