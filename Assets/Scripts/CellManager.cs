@@ -10,6 +10,10 @@ public class CellManager : MonoBehaviour
     [SerializeField] GameObject markerPrefab;
     [SerializeField] bool creatorMode;
     [SerializeField] UiGame uiGame;
+    [SerializeField] GameObject fxDeath;
+    [SerializeField] GameObject fxWater;
+    [SerializeField] GameObject fxRock;
+    [SerializeField] GameObject fxEarth;
 
     Cell[,] cells;
 
@@ -22,10 +26,15 @@ public class CellManager : MonoBehaviour
     private int startX = -1;
     private bool gameOver;
 
+    private List<GameObject> fxs = new List<GameObject>();
+
+    static public string LevelContent { get; set; }
+
     void Start()
     {
         if(!creatorMode)
         {
+            if (content == "") content = LevelContent;
             CreateCells();
             CheckRoots();
         }
@@ -49,6 +58,7 @@ public class CellManager : MonoBehaviour
         activeCells = new List<Cell>();
         CreateCells();
         CheckRoots();
+        fxs.RemoveAll(go => { Destroy(go); return true; });
     }
 
     void CreateCells()
@@ -188,6 +198,13 @@ public class CellManager : MonoBehaviour
         newCell.ContainsRoot = true;
     }
 
+    private void AddFx(GameObject prefab, Vector3 position, bool destroyOnRestart = false)
+    {
+        var go = Instantiate(prefab);
+        go.transform.position = position;
+        if (destroyOnRestart) fxs.Add(go);
+    }
+
     public MoveOutcome ExecuteMove(Move move)
     {
         MoveOutcome outcome = MoveOutcome.OK;
@@ -227,10 +244,26 @@ public class CellManager : MonoBehaviour
 
             switch (cellOutcome)
             {
-                case MoveOutcome.NONE: oldCells.Add(cell); break;
-                case MoveOutcome.DEATH: ProcessRoot(cells[newX, newY], cell, previousPosition, direction); outcome = MoveOutcome.DEATH; break;
-                case MoveOutcome.OK: ProcessRoot(cells[newX, newY], cell, previousPosition, direction); newCells.Add(cells[newX, newY]); break;
-                case MoveOutcome.WATER: ProcessRoot(cells[newX, newY], cell, previousPosition, direction); /* newCells.Add(cells[newX, newY]); */ waterCount--; break;
+                case MoveOutcome.NONE:
+                    oldCells.Add(cell);
+                    AddFx(fxRock, new Vector3(cell.transform.position.x, cell.transform.position.y, -1));
+                    break;
+                case MoveOutcome.DEATH:
+                    ProcessRoot(cells[newX, newY], cell, previousPosition, direction);
+                    outcome = MoveOutcome.DEATH;
+                    AddFx(fxDeath, new Vector3(newX, newY, -1), true);
+                    break;
+                case MoveOutcome.OK:
+                    ProcessRoot(cells[newX, newY], cell, previousPosition, direction);
+                    AddFx(fxEarth, new Vector3(newX, newY, -1));
+                    newCells.Add(cells[newX, newY]);
+                    break;
+                case MoveOutcome.WATER:
+                    ProcessRoot(cells[newX, newY], cell, previousPosition, direction);
+                    AddFx(fxWater, new Vector3(newX, newY, -1), true);
+                    /* newCells.Add(cells[newX, newY]); */
+                    waterCount--;
+                    break;
             }
         });
 
@@ -256,6 +289,24 @@ public class CellManager : MonoBehaviour
         return outcome;
     }
 
+    void AdjustCamera()
+    {
+        if(cells.GetLength(1) > 20 && activeCells.Count > 0)
+        {
+            var position = Camera.main.transform.position;
+
+            float y = 0;
+
+            activeCells.ForEach(cell => y += cell.transform.position.y);
+
+            y = y / activeCells.Count;
+
+            position.y = y;
+
+            Camera.main.transform.position = Camera.main.transform.position * 0.99f + position * 0.01f;
+        }
+    }
+
     void Update()
     {
         if (gameOver) return;
@@ -263,5 +314,7 @@ public class CellManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow)) ExecuteMove(Move.DOWN);
         if (Input.GetKeyDown(KeyCode.LeftArrow)) ExecuteMove(Move.LEFT);
         if (Input.GetKeyDown(KeyCode.RightArrow)) ExecuteMove(Move.RIGHT);
+
+        AdjustCamera();
     }
 }

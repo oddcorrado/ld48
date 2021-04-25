@@ -84,3 +84,9 @@ MonoBehaviour:
     E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E'
   prefab: {fileID: 909225021522922772, guid: a56d2f283b6cf436ebe965a91942356c, type: 3}
   markerPrefab: {fileID: 7124061496463741950, guid: 2c01273bcfb524ec887e43226247c9b4, type: 3}
+  creatorMode: 0
+  uiGame: {fileID: 0}
+  fxDeath: {fileID: 4957592098795480629, guid: c9ab7b51ba8424d25ad280b56a83a019, type: 3}
+  fxWater: {fileID: 8318229993257864585, guid: edf76f900e3404589a7bdb5dfac4c181, type: 3}
+  fxRock: {fileID: 2383659782916928218, guid: bf3d151df357a4d218c5998cc4077134, type: 3}
+  fxEarth: {fileID: 685972713744920139, guid: 9ae3c0e786eb445458cab411e371bbfd, type: 3}
