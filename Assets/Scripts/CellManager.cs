@@ -89,26 +89,31 @@ public class CellManager : MonoBehaviour
         cell.InitDone = true;
         cell.PreviousPosition = previousPosition;
 
+        List<Cell.RootDirection> directions = new List<Cell.RootDirection>();
+
         if(x > 0 && cells[x - 1, y].ContainsRoot)
         {
-            cell.Direction = new Cell.RootDirection[] { Cell.RootDirection.Left };
+            if(previousPosition != Cell.RootDirection.Left) directions.Add(Cell.RootDirection.Left);
             CheckCellNeighbours(x - 1, y, Cell.RootDirection.Right);
         }
         if (x < cells.GetLength(0) - 1 && cells[x + 1, y].ContainsRoot)
         {
-            cell.Direction = new Cell.RootDirection[] { Cell.RootDirection.Right };
+            if (previousPosition != Cell.RootDirection.Right) directions.Add(Cell.RootDirection.Right);
             CheckCellNeighbours(x + 1, y, Cell.RootDirection.Left);
         }
         if (y > 0 && cells[x, y - 1].ContainsRoot)
         {
-            cell.Direction = new Cell.RootDirection[] { Cell.RootDirection.Down };
+            if (previousPosition != Cell.RootDirection.Down) directions.Add(Cell.RootDirection.Down);
             CheckCellNeighbours(x, y - 1, Cell.RootDirection.Up);
         }
         if (y < cells.GetLength(1) - 1 && cells[x, y + 1].ContainsRoot)
         {
-            cell.Direction = new Cell.RootDirection[] { Cell.RootDirection.Up };
+            if (previousPosition != Cell.RootDirection.Up) directions.Add(Cell.RootDirection.Up);
             CheckCellNeighbours(x, y + 1, Cell.RootDirection.Down);
         }
+
+        cell.Direction = directions.ToArray();
+        Debug.Log($"directions: {directions.Count}");
     }
 
     void CreateCell(int x, int y, string code)
