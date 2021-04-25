@@ -173,11 +173,9 @@ public class Cell : MonoBehaviour
 
             case (RootDirection.Up, RootDirection.Down, RootDirection.Right):
                 rootSprite.sprite = UpDownRight;
-                rootSprite.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 break;
             case (RootDirection.Up, RootDirection.Right, RootDirection.Down):
                 rootSprite.sprite = UpDownRight;
-                rootSprite.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 break;
             case (RootDirection.Up, RootDirection.Down, RootDirection.Left):
                 rootSprite.sprite = UpDownLeft;
