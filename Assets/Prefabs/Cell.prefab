@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundSprites:
-  - {fileID: 21300000, guid: 455ff132e82614b51ac0592f20604e79, type: 3}
+  - {fileID: 6423806749927177598, guid: 455ff132e82614b51ac0592f20604e79, type: 3}
   - {fileID: 21300000, guid: 6c60d3e7d5db9d94bb532a2302bd3da3, type: 3}
   - {fileID: 21300000, guid: c803131ccbf8381419d77b8fc5a8869e, type: 3}
   - {fileID: 21300000, guid: a942a441feb0a4dd28a4861bbf73137e, type: 3}
