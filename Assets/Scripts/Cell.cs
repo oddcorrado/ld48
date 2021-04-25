@@ -13,15 +13,23 @@ public class Cell : MonoBehaviour
     [SerializeField] private Sprite rootEdgePreviousRight;
     [SerializeField] private Sprite rootEdgePreviousUp;
     [SerializeField] private Sprite rootEdgePreviousDown;
+    [SerializeField] private Sprite rootEdge3Directions;
+    [SerializeField] private Sprite UpDownRight;
+    [SerializeField] private Sprite UpDownLeft;
+    [SerializeField] private Sprite UpRightLeft;
+    [SerializeField] private Sprite DownUpRight;
+    [SerializeField] private Sprite DownUpLeft;
+    [SerializeField] private Sprite DownRightLeft;
+    [SerializeField] private Sprite RightDownUp;
+    [SerializeField] private Sprite RightDownLeft;
+    [SerializeField] private Sprite RightUpLeft;
+    [SerializeField] private Sprite LeftDownUp;
+    [SerializeField] private Sprite LeftDownRight;
+    [SerializeField] private Sprite LeftUpRight;
+
     public enum BackType { Earth, Water, Poison, Rock }
     public enum RootDirection { Up, Down, Left, Right }
-    /*1 = straight up
-     *2 = straight side
-     *3 = up right
-     *4 = up left
-     *5 = down right
-     *6 = down left
-     */
+   
 
     public bool InitDone;
 
@@ -153,9 +161,103 @@ public class Cell : MonoBehaviour
 
     void ProcessDirectionDouble()
     {
+        switch ((previousPosition, directions[0], directions[1]))
+        {
+
+            case (RootDirection.Up, RootDirection.Down, RootDirection.Right ):
+                rootSprite.sprite = UpDownRight;
+                rootSprite.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                break;
+            case (RootDirection.Up, RootDirection.Right, RootDirection.Down):
+                rootSprite.sprite = UpDownRight;
+                rootSprite.transform.localRotation = Quaternion.Euler(0, 180, 0);
+                break;
+            case (RootDirection.Up, RootDirection.Down, RootDirection.Left):
+                rootSprite.sprite = UpDownLeft;
+                break;
+            case (RootDirection.Up, RootDirection.Left, RootDirection.Down):
+                rootSprite.sprite = UpDownLeft;
+                break;
+            case (RootDirection.Up, RootDirection.Left, RootDirection.Right):
+                rootSprite.sprite = UpRightLeft;
+                break;
+            case (RootDirection.Up, RootDirection.Right, RootDirection.Left):
+                rootSprite.sprite = UpRightLeft;
+                break;
+
+
+
+            case (RootDirection.Down, RootDirection.Up, RootDirection.Right):
+                rootSprite.sprite = DownUpRight;
+                break;
+            case (RootDirection.Down, RootDirection.Right, RootDirection.Up):
+                rootSprite.sprite = DownUpRight;
+                break;
+            case (RootDirection.Down, RootDirection.Up, RootDirection.Left):
+                rootSprite.sprite = DownUpLeft;
+                break;
+            case (RootDirection.Down, RootDirection.Left, RootDirection.Up):
+                rootSprite.sprite = DownUpLeft;
+                break;
+            case (RootDirection.Down, RootDirection.Left, RootDirection.Right):
+                rootSprite.sprite = DownRightLeft;
+                break;
+            case (RootDirection.Down, RootDirection.Right, RootDirection.Left):
+                rootSprite.sprite = DownRightLeft;
+                break;
+
+
+
+
+            case (RootDirection.Right, RootDirection.Down, RootDirection.Up):
+                rootSprite.sprite = RightDownUp;
+                break;
+            case (RootDirection.Right, RootDirection.Up, RootDirection.Down):
+                rootSprite.sprite = RightDownUp;
+                break;
+            case (RootDirection.Right, RootDirection.Down, RootDirection.Left):
+                rootSprite.sprite = RightDownLeft;
+                break;
+            case (RootDirection.Right, RootDirection.Left, RootDirection.Down):
+                rootSprite.sprite = RightDownLeft;
+                break;
+            case (RootDirection.Right, RootDirection.Up, RootDirection.Left):
+                rootSprite.sprite = RightUpLeft;
+                break;
+            case (RootDirection.Right, RootDirection.Left, RootDirection.Up):
+                rootSprite.sprite = RightUpLeft;
+                break;
+
+
+
+
+            case (RootDirection.Left, RootDirection.Down, RootDirection.Up):
+                rootSprite.sprite = LeftDownUp;
+                break;
+            case (RootDirection.Left, RootDirection.Up, RootDirection.Down):
+                rootSprite.sprite = LeftDownUp;
+                break;
+            case (RootDirection.Left, RootDirection.Down, RootDirection.Right):
+                rootSprite.sprite = LeftDownRight;
+                break;
+            case (RootDirection.Left, RootDirection.Right, RootDirection.Down):
+                rootSprite.sprite = LeftDownRight;
+                break;
+            case (RootDirection.Left, RootDirection.Up, RootDirection.Right):
+                rootSprite.sprite = LeftUpRight;
+                break;
+            case (RootDirection.Left, RootDirection.Right, RootDirection.Up):
+                rootSprite.sprite = LeftUpRight;
+                break;
+
+            default:
+
+                break;
+        };
     }
 
     void ProcessDirectionTriple()
     {
+        rootSprite.sprite = rootEdge3Directions;
     }
 }
