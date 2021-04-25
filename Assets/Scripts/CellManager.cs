@@ -9,6 +9,7 @@ public class CellManager : MonoBehaviour
     [SerializeField] GameObject prefab;
     [SerializeField] GameObject markerPrefab;
     [SerializeField] bool creatorMode;
+    [SerializeField] UiGame uiGame;
 
     Cell[,] cells;
 
@@ -19,6 +20,7 @@ public class CellManager : MonoBehaviour
 
     private int waterCount = 0;
     private int startX = -1;
+    private bool gameOver;
 
     void Start()
     {
@@ -37,6 +39,7 @@ public class CellManager : MonoBehaviour
 
     public void Restart()
     {
+        gameOver = false;
         int childCount = transform.childCount;
 
         for (int i = childCount - 1; i >= 0; i--) Destroy(transform.GetChild(i).gameObject);
@@ -225,15 +228,16 @@ public class CellManager : MonoBehaviour
             switch (cellOutcome)
             {
                 case MoveOutcome.NONE: oldCells.Add(cell); break;
-                case MoveOutcome.DEATH: outcome = MoveOutcome.DEATH; break;
+                case MoveOutcome.DEATH: ProcessRoot(cells[newX, newY], cell, previousPosition, direction); outcome = MoveOutcome.DEATH; break;
                 case MoveOutcome.OK: ProcessRoot(cells[newX, newY], cell, previousPosition, direction); newCells.Add(cells[newX, newY]); break;
-                case MoveOutcome.WATER: /* newCells.Add(cells[newX, newY]); */ waterCount--; break;
+                case MoveOutcome.WATER: ProcessRoot(cells[newX, newY], cell, previousPosition, direction); /* newCells.Add(cells[newX, newY]); */ waterCount--; break;
             }
         });
 
         if (outcome == MoveOutcome.DEATH)
         {
-            Debug.Log("YOU DIE");
+            uiGame.Lose();
+            gameOver = true;
             return MoveOutcome.DEATH;
         }
 
@@ -244,7 +248,8 @@ public class CellManager : MonoBehaviour
 
         if (waterCount <= 0)
         {
-            Debug.Log("YOU WIN");
+            uiGame.Win();
+            gameOver = true;
             return MoveOutcome.WIN;
         }
 
@@ -253,6 +258,7 @@ public class CellManager : MonoBehaviour
 
     void Update()
     {
+        if (gameOver) return;
         if (Input.GetKeyDown(KeyCode.UpArrow)) ExecuteMove(Move.UP);
         if (Input.GetKeyDown(KeyCode.DownArrow)) ExecuteMove(Move.DOWN);
         if (Input.GetKeyDown(KeyCode.LeftArrow)) ExecuteMove(Move.LEFT);
