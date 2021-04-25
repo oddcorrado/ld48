@@ -56,10 +56,25 @@ MonoBehaviour:
   - {fileID: 2729774126298305322, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
   - {fileID: 2729774126298305322, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
   rootAngles:
+  - {fileID: 1197744309606674869, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  - {fileID: 5548057655715359200, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
   - {fileID: 1109085756814764847, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
-  - {fileID: 1109085756814764847, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  - {fileID: 2810136246107822146, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
   rootEdge: {fileID: -5248998044155407264, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
   rootCross: {fileID: 2478327579514269630, guid: 97f85b61c8dbf174697694b44457a0d2, type: 3}
+  rootEdge3Directions: {fileID: 0}
+  UpDownRight: {fileID: 0}
+  UpDownLeft: {fileID: 0}
+  UpRightLeft: {fileID: 0}
+  DownUpRight: {fileID: 0}
+  DownUpLeft: {fileID: 0}
+  DownRightLeft: {fileID: 0}
+  RightDownUp: {fileID: 0}
+  RightDownLeft: {fileID: 0}
+  RightUpLeft: {fileID: 0}
+  LeftDownUp: {fileID: 0}
+  LeftDownRight: {fileID: 0}
+  LeftUpRight: {fileID: 0}
   InitDone: 0
 --- !u!1 &2852322820923441084
 GameObject:
