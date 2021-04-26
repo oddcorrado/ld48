@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 6507510957486793669}
-  delay: 0.1
-  jitter: 0.03
+  delay: 0.06
+  jitter: 0.02
   sprites:
   - {fileID: -3812333773472644134, guid: c914b1536ee8a4c11b64959760eda4c0, type: 3}
   - {fileID: 6054877595023770300, guid: c914b1536ee8a4c11b64959760eda4c0, type: 3}

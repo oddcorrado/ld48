@@ -21,6 +21,8 @@ public class CellManager : MonoBehaviour
     [SerializeField] AudioSource soundLose;
     [SerializeField] AudioSource soundInvert;
     [SerializeField] AudioSource soundWater;
+    [SerializeField] AudioSource soundDig;
+    [SerializeField] AudioSource soundWind;
     [SerializeField] Transform level;
 
     Cell[,] cells;
@@ -300,6 +302,7 @@ public class CellManager : MonoBehaviour
                 case MoveOutcome.OK_INVERT:
                     ProcessRoot(cells[newX, newY], cell, previousPosition, cellDirection);
                     AddFx(fxEarth, new Vector3(newX, newY, -2));
+                    soundDig.Play();
                     if (cellOutcome == MoveOutcome.OK_INVERT) soundInvert.Play();
                     if (cellOutcome == MoveOutcome.OK_INVERT) cells[newX, newY].IsInverted = !cell.IsInverted;
                     else cells[newX, newY].IsInverted = cell.IsInverted;
@@ -387,6 +390,9 @@ public class CellManager : MonoBehaviour
 
     void Update()
     {
+        var vol = Camera.main.transform.position.y / Mathf.Max(cells.GetLength(1), 2);
+        soundWind.volume = vol * vol;
+
         if (gameOver) return;
         if (Input.GetKeyDown(KeyCode.UpArrow)) ExecuteMove(Move.UP);
         if (Input.GetKeyDown(KeyCode.DownArrow)) ExecuteMove(Move.DOWN);
@@ -394,6 +400,7 @@ public class CellManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow)) ExecuteMove(Move.RIGHT);
         if (Input.GetKey(KeyCode.U)) CameraControl(1 / 16f);
         if (Input.GetKey(KeyCode.D)) CameraControl(-1 / 16f);
+        if (Input.GetKey(KeyCode.R)) Restart();
         if (Mathf.Abs(Input.mouseScrollDelta.y) > 0) CameraControl(Input.mouseScrollDelta.y * 0.2f);
 
         AdjustCamera();
