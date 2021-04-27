@@ -172,7 +172,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &259354638299910105
 CanvasRenderer:
@@ -282,3 +282,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: 
   tutorial: 
+  displayText: {fileID: 9125926062346811803}
+  image: {fileID: 7401828265309028883}

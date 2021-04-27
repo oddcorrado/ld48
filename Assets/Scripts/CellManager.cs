@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CellManager : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class CellManager : MonoBehaviour
     [SerializeField] AudioSource soundDig;
     [SerializeField] AudioSource soundWind;
     [SerializeField] Transform level;
+    [SerializeField] Levels levelData;
 
     Cell[,] cells;
 
@@ -42,6 +44,7 @@ public class CellManager : MonoBehaviour
 
     static public string LevelContent { get; set; }
     static public string LevelTutorial { get; set; }
+    static public int LevelIndex { get; set; }
 
     void Start()
     {
@@ -75,6 +78,15 @@ public class CellManager : MonoBehaviour
         CheckRoots();
         CheckBackground();
         fxs.RemoveAll(go => { Destroy(go); return true; });
+    }
+
+    public void NextLevel()
+    {
+        var data = levelData.Data[Mathf.Min(levelData.Data.Length - 1, LevelIndex + 1)];
+        LevelContent = data.levelData;
+        LevelTutorial = data.tutorial;
+        LevelIndex = Mathf.Min(levelData.Data.Length - 1, LevelIndex + 1);
+        SceneManager.LoadScene("LevelPlayer");
     }
 
     void CreateCells()
@@ -367,13 +379,15 @@ public class CellManager : MonoBehaviour
 
     IEnumerator WinSequence()
     {
+        PlayerPrefs.SetInt("BestIndex", Mathf.Max(LevelIndex, PlayerPrefs.GetInt("BestIndex", 0)));
+
         uiGame.Win(0);
         tutorialText.text = "";
         yield return new WaitForSeconds(0.5f);
         soundWin.Play();
 
         var endY = cells.GetLength(1) + 8;
-        while (Camera.main.transform.position.y < endY - 0.5f)
+        while (Camera.main.transform.position.y < endY - 1)
         {
             Camera.main.transform.position += new Vector3(0, (endY - Camera.main.transform.position.y) * 0.01f, 0);
             yield return new WaitForEndOfFrame();
@@ -394,12 +408,12 @@ public class CellManager : MonoBehaviour
         soundWind.volume = vol * vol;
 
         if (gameOver) return;
-        if (Input.GetKeyDown(KeyCode.UpArrow)) ExecuteMove(Move.UP);
-        if (Input.GetKeyDown(KeyCode.DownArrow)) ExecuteMove(Move.DOWN);
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) ExecuteMove(Move.LEFT);
-        if (Input.GetKeyDown(KeyCode.RightArrow)) ExecuteMove(Move.RIGHT);
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) ExecuteMove(Move.UP);
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) ExecuteMove(Move.DOWN);
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) ExecuteMove(Move.LEFT);
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) ExecuteMove(Move.RIGHT);
         if (Input.GetKey(KeyCode.U)) CameraControl(1 / 16f);
-        if (Input.GetKey(KeyCode.D)) CameraControl(-1 / 16f);
+        if (Input.GetKey(KeyCode.J)) CameraControl(-1 / 16f);
         if (Input.GetKey(KeyCode.R)) Restart();
         if (Mathf.Abs(Input.mouseScrollDelta.y) > 0) CameraControl(Input.mouseScrollDelta.y * 0.2f);
 

@@ -675,6 +675,7 @@ MonoBehaviour:
   soundDig: {fileID: 3812326741628839715}
   soundWind: {fileID: 546013083822778940}
   level: {fileID: 4935585516314796927}
+  levelData: {fileID: 11400000, guid: ad2c44ab1da7b4750ba2b24f2d3fa85e, type: 2}
 --- !u!1 &6354406110587231499
 GameObject:
   m_ObjectHideFlags: 0
