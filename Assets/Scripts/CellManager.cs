@@ -29,7 +29,8 @@ public class CellManager : MonoBehaviour
 
     Cell[,] cells;
 
-    List<Cell> activeCells = new List<Cell>();
+    List<Cell> activeCells = new List<Cell>(); // List of currently active cells
+    List<List<Cell>> history = new List<List<Cell>>(); // history for undo
 
     public enum MoveOutcome { DEATH, OK, OK_INVERT, WIN, WATER, NONE }
     public enum Move { UP, DOWN, LEFT, RIGHT }
@@ -340,6 +341,8 @@ public class CellManager : MonoBehaviour
         activeCells = oldCells;
         newCells.ForEach(cell => activeCells.Add(cell));
 
+        // TODO Undo: Update history with activeCells, faire une copie de la liste activeCells et l'ajouter à la liste history
+
         // ProcessRoot(newCells, direction);
 
         if (waterCount <= 0)
@@ -402,6 +405,15 @@ public class CellManager : MonoBehaviour
         uiGame.Lose();
     }
 
+    void Undo()
+    {
+        // TODO UNDO : utiliser la history
+        // TODO UNDO : si la racine d'avant est la même que l'actuelle ne rien faire
+        // TODO UNDO : si la racine d'avant est différente
+        //      => effacer l'actuelle
+        //      => mettre celle d'avant en bourgeon normalement il suffit de mettre, cell.Direction = [] et cell.ContainsRoot = true
+    }
+
     void Update()
     {
         var vol = Camera.main.transform.position.y / Mathf.Max(cells.GetLength(1), 2);
@@ -412,6 +424,7 @@ public class CellManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) ExecuteMove(Move.DOWN);
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) ExecuteMove(Move.LEFT);
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) ExecuteMove(Move.RIGHT);
+        if (Input.GetKeyDown(KeyCode.Backspace)) Undo();
         if (Input.GetKey(KeyCode.U)) CameraControl(1 / 16f);
         if (Input.GetKey(KeyCode.J)) CameraControl(-1 / 16f);
         if (Input.GetKey(KeyCode.R)) Restart();

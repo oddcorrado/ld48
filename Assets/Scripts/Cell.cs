@@ -46,6 +46,7 @@ public class Cell : MonoBehaviour
         {
             containsRoot = value;
             int rotation = 0;
+            // TODO UNDO: faire ce code seulement si value est true 
             switch (PreviousPosition)
             {
                 case RootDirection.Up: rotation = 0;  rootSprite.sprite = rootEdge; break;
@@ -53,6 +54,7 @@ public class Cell : MonoBehaviour
                 case RootDirection.Left: rotation = 90; rootSprite.sprite = rootEdge; break;
                 case RootDirection.Right: rotation = 270; rootSprite.sprite = rootEdge; break;
             }
+            // TODO UNDO: si value est false cacher la racine : rootSprite.sprite = null
             rootSprite.transform.localRotation = Quaternion.Euler(0, 0, rotation);
         }
     }
