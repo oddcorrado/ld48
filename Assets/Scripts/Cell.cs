@@ -27,6 +27,7 @@ public class Cell : MonoBehaviour
 
     public enum BackType { Earth, Water, Poison, Rock, Inverter }
     public enum RootDirection { Up, Down, Left, Right }
+    public enum RootStatus { OK, POISON, WATER}
     /*1 = straight up
      *2 = straight side
      *3 = up right
@@ -37,6 +38,8 @@ public class Cell : MonoBehaviour
 
     public bool InitDone;
     public bool IsInverted;
+    public RootStatus Status;
+    public GameObject Fx;
 
     private bool containsRoot = false;
     public bool ContainsRoot
@@ -46,15 +49,20 @@ public class Cell : MonoBehaviour
         {
             containsRoot = value;
             int rotation = 0;
-            // TODO UNDO: faire ce code seulement si value est true 
-            switch (PreviousPosition)
+            if(containsRoot == true)
             {
-                case RootDirection.Up: rotation = 0;  rootSprite.sprite = rootEdge; break;
-                case RootDirection.Down: rotation = 180; rootSprite.sprite = rootEdge; break;
-                case RootDirection.Left: rotation = 90; rootSprite.sprite = rootEdge; break;
-                case RootDirection.Right: rotation = 270; rootSprite.sprite = rootEdge; break;
+                switch (PreviousPosition)
+                {
+                    case RootDirection.Up: rotation = 0; rootSprite.sprite = rootEdge; break;
+                    case RootDirection.Down: rotation = 180; rootSprite.sprite = rootEdge; break;
+                    case RootDirection.Left: rotation = 90; rootSprite.sprite = rootEdge; break;
+                    case RootDirection.Right: rotation = 270; rootSprite.sprite = rootEdge; break;
+                }
             }
-            // TODO UNDO: si value est false cacher la racine : rootSprite.sprite = null
+            else
+            {
+                rootSprite.sprite = null;
+            }
             rootSprite.transform.localRotation = Quaternion.Euler(0, 0, rotation);
         }
     }

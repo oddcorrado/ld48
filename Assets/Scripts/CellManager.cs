@@ -32,12 +32,20 @@ public class CellManager : MonoBehaviour
     List<Cell> activeCells = new List<Cell>(); // List of currently active cells
     List<List<Cell>> history = new List<List<Cell>>(); // history for undo
 
+    enum CellEventType { NONE, WATER, DEATH }
+    class CellEvent
+    {
+        public Cell cell;
+        public CellEventType type;
+    }
+
     public enum MoveOutcome { DEATH, OK, OK_INVERT, WIN, WATER, NONE }
     public enum Move { UP, DOWN, LEFT, RIGHT }
 
     private int waterCount = 0;
     private int startX = -1;
     private bool gameOver;
+    private bool isDead;
 
     private List<GameObject> fxs = new List<GameObject>();
 
@@ -234,11 +242,12 @@ public class CellManager : MonoBehaviour
         newCell.ContainsRoot = true;
     }
 
-    private void AddFx(GameObject prefab, Vector3 position, bool destroyOnRestart = false)
+    private GameObject AddFx(GameObject prefab, Vector3 position, bool destroyOnRestart = false)
     {
         var go = Instantiate(prefab);
         go.transform.position = position;
         if (destroyOnRestart) fxs.Add(go);
+        return go;
     }
 
     public MoveOutcome ExecuteMove(Move move)
@@ -247,7 +256,11 @@ public class CellManager : MonoBehaviour
         List<Cell> newCells = new List<Cell>();
         List<Cell> oldCells = new List<Cell>();
 
-        playerCameraControl = false;
+        //  Update history with activeCells
+        List<Cell> historyStep = new List<Cell>(activeCells);
+        history.Add(historyStep);
+
+        // playerCameraControl = false;
 
         Cell.RootDirection direction = Cell.RootDirection.Up;
 
@@ -282,12 +295,15 @@ public class CellManager : MonoBehaviour
                 }
             }
 
-            switch (cellMove)
+            if (cell.Status != Cell.RootStatus.WATER && cell.Status != Cell.RootStatus.POISON)
             {
-                case Move.UP: newY++; break;
-                case Move.DOWN: newY--; break;
-                case Move.RIGHT: newX++; break;
-                case Move.LEFT: newX--; break;
+                switch (cellMove)
+                {
+                    case Move.UP: newY++; break;
+                    case Move.DOWN: newY--; break;
+                    case Move.RIGHT: newX++; break;
+                    case Move.LEFT: newX--; break;
+                }
             }
 
 
@@ -309,7 +325,9 @@ public class CellManager : MonoBehaviour
                     ProcessRoot(cells[newX, newY], cell, previousPosition, cellDirection);
                     outcome = MoveOutcome.DEATH;
                     soundLose.Play();
-                    AddFx(fxDeath, new Vector3(newX, newY, -1), true);
+                    cells[newX, newY].Fx = AddFx(fxDeath, new Vector3(newX, newY, -1), true);
+                    newCells.Add(cells[newX, newY]);
+                    cells[newX, newY].Status = Cell.RootStatus.POISON;
                     break;
                 case MoveOutcome.OK:
                 case MoveOutcome.OK_INVERT:
@@ -323,25 +341,26 @@ public class CellManager : MonoBehaviour
                     break;
                 case MoveOutcome.WATER:
                     ProcessRoot(cells[newX, newY], cell, previousPosition, cellDirection);
-                    AddFx(fxWater, new Vector3(newX, newY + 0.7f, -1), true);
+                    cells[newX, newY].Fx = AddFx(fxWater, new Vector3(newX, newY + 0.7f, -1), true);
                     soundWater.Play();
-                    /* newCells.Add(cells[newX, newY]); */
+                    newCells.Add(cells[newX, newY]);
+                    cells[newX, newY].Status = Cell.RootStatus.WATER;
                     waterCount--;
                     break;
             }
         });
 
-        if (outcome == MoveOutcome.DEATH)
-        {
-            StartCoroutine(LoseSequence());
-            gameOver = true;
-            return MoveOutcome.DEATH;
-        }
-
         activeCells = oldCells;
         newCells.ForEach(cell => activeCells.Add(cell));
 
-        // TODO Undo: Update history with activeCells, faire une copie de la liste activeCells et l'ajouter à la liste history
+        if (outcome == MoveOutcome.DEATH)
+        {
+            // StartCoroutine(LoseSequence());
+            isDead = true;
+            return MoveOutcome.DEATH;
+        }
+
+
 
         // ProcessRoot(newCells, direction);
 
@@ -358,6 +377,7 @@ public class CellManager : MonoBehaviour
     void AdjustCamera()
     {
         if (playerCameraControl) return;
+
         if(activeCells.Count > 0)
         {
             var position = Camera.main.transform.position;
@@ -368,7 +388,8 @@ public class CellManager : MonoBehaviour
 
             y = y / activeCells.Count;
 
-            position.y = y;
+            if (cells.GetLength(1) > 14) position.y = y;
+            else position.y = 6;
 
             Camera.main.transform.position = Camera.main.transform.position * 0.99f + position * 0.01f;
         }
@@ -407,11 +428,35 @@ public class CellManager : MonoBehaviour
 
     void Undo()
     {
-        // TODO UNDO : utiliser la history
-        // TODO UNDO : si la racine d'avant est la même que l'actuelle ne rien faire
-        // TODO UNDO : si la racine d'avant est différente
-        //      => effacer l'actuelle
-        //      => mettre celle d'avant en bourgeon normalement il suffit de mettre, cell.Direction = [] et cell.ContainsRoot = true
+        int waterDelta = 0;
+        isDead = false;
+
+        //Repalce active cells with history cells
+        if (history.Count == 0) return;
+        var step = history[history.Count - 1];
+        history.RemoveAt(history.Count - 1);
+        activeCells.ForEach(cell =>
+        {
+            cell.ContainsRoot = false;
+            if (cell.Status == Cell.RootStatus.WATER) waterDelta++;
+            if (!step.Contains(cell) && cell.Fx != null)
+            {
+                Destroy(cell.Fx);
+                cell.Fx = null;
+            }
+        });
+
+        activeCells.RemoveAll(cell => true);
+        step.ForEach(cell =>
+        {
+            cell.Direction = new Cell.RootDirection[] { };
+            cell.ContainsRoot = true;
+            activeCells.Add(cell);
+            if (cell.Status == Cell.RootStatus.WATER) waterDelta--;
+            if (cell.Back == Cell.BackType.Poison) isDead = true;
+        });
+
+        waterCount += waterDelta;
     }
 
     void Update()
@@ -420,15 +465,17 @@ public class CellManager : MonoBehaviour
         soundWind.volume = vol * vol;
 
         if (gameOver) return;
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) ExecuteMove(Move.UP);
-        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) ExecuteMove(Move.DOWN);
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) ExecuteMove(Move.LEFT);
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) ExecuteMove(Move.RIGHT);
-        if (Input.GetKeyDown(KeyCode.Backspace)) Undo();
         if (Input.GetKey(KeyCode.U)) CameraControl(1 / 16f);
         if (Input.GetKey(KeyCode.J)) CameraControl(-1 / 16f);
         if (Input.GetKey(KeyCode.R)) Restart();
         if (Mathf.Abs(Input.mouseScrollDelta.y) > 0) CameraControl(Input.mouseScrollDelta.y * 0.2f);
+        if (Input.GetKeyDown(KeyCode.Backspace)) Undo();
+        if (isDead) return;
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) ExecuteMove(Move.UP);
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) ExecuteMove(Move.DOWN);
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) ExecuteMove(Move.LEFT);
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) ExecuteMove(Move.RIGHT);
+
 
         AdjustCamera();
     }
