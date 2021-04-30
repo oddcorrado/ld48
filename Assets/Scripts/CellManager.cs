@@ -319,7 +319,7 @@ public class CellManager : MonoBehaviour
             {
                 case MoveOutcome.NONE:
                     oldCells.Add(cell);
-                    AddFx(fxRock, new Vector3(cell.transform.position.x, cell.transform.position.y, -1));
+                    AddFx(fxRock, new Vector3(cell.transform.position.x, cell.transform.position.y, -2));
                     break;
                 case MoveOutcome.DEATH:
                     ProcessRoot(cells[newX, newY], cell, previousPosition, cellDirection);
@@ -331,17 +331,17 @@ public class CellManager : MonoBehaviour
                     break;
                 case MoveOutcome.OK:
                 case MoveOutcome.OK_INVERT:
-                    ProcessRoot(cells[newX, newY], cell, previousPosition, cellDirection);
                     AddFx(fxEarth, new Vector3(newX, newY, -2));
                     soundDig.Play();
                     if (cellOutcome == MoveOutcome.OK_INVERT) soundInvert.Play();
                     if (cellOutcome == MoveOutcome.OK_INVERT) cells[newX, newY].IsInverted = !cell.IsInverted;
                     else cells[newX, newY].IsInverted = cell.IsInverted;
                     newCells.Add(cells[newX, newY]);
+                    ProcessRoot(cells[newX, newY], cell, previousPosition, cellDirection);
                     break;
                 case MoveOutcome.WATER:
                     ProcessRoot(cells[newX, newY], cell, previousPosition, cellDirection);
-                    cells[newX, newY].Fx = AddFx(fxWater, new Vector3(newX, newY + 0.7f, -1), true);
+                    cells[newX, newY].Fx = AddFx(fxWater, new Vector3(newX, newY + 0.7f, -2), true);
                     soundWater.Play();
                     newCells.Add(cells[newX, newY]);
                     cells[newX, newY].Status = Cell.RootStatus.WATER;
@@ -378,20 +378,32 @@ public class CellManager : MonoBehaviour
     {
         if (playerCameraControl) return;
 
+        var cellCount = 0;
+
         if(activeCells.Count > 0)
         {
             var position = Camera.main.transform.position;
 
             float y = 0;
 
-            activeCells.ForEach(cell => y += cell.transform.position.y);
+            activeCells.ForEach(cell =>
+            {
+                if (cell.Status != Cell.RootStatus.WATER)
+                {
+                    y += cell.transform.position.y;
+                    cellCount++;
+                }
+            });
 
-            y = y / activeCells.Count;
+            if(cellCount > 0)
+            {
+                y = y / cellCount;
 
-            if (cells.GetLength(1) > 14) position.y = y;
-            else position.y = 6;
+                if (cells.GetLength(1) > 14) position.y = y;
+                else position.y = 6;
 
-            Camera.main.transform.position = Camera.main.transform.position * 0.99f + position * 0.01f;
+                Camera.main.transform.position = Camera.main.transform.position * 0.99f + position * 0.01f;
+            }
         }
     }
 
@@ -469,7 +481,7 @@ public class CellManager : MonoBehaviour
         if (Input.GetKey(KeyCode.J)) CameraControl(-1 / 16f);
         if (Input.GetKey(KeyCode.R)) Restart();
         if (Mathf.Abs(Input.mouseScrollDelta.y) > 0) CameraControl(Input.mouseScrollDelta.y * 0.2f);
-        if (Input.GetKeyDown(KeyCode.Backspace)) Undo();
+        if (Input.GetKeyDown(KeyCode.B)) Undo();
         if (isDead) return;
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) ExecuteMove(Move.UP);
         if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) ExecuteMove(Move.DOWN);

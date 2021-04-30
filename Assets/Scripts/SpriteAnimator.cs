@@ -10,11 +10,16 @@ public class SpriteAnimator : MonoBehaviour
     [SerializeField] Sprite[] sprites;
     [SerializeField] bool playOnce;
 
-    void Start()
+    void OnEnable()
     {
         delay = delay + Random.Range(-jitter, +jitter);
         if (sprites.Length > 0) StartCoroutine(Loop());
         else Debug.LogError("No sprites");
+    }
+
+    void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     IEnumerator Loop()

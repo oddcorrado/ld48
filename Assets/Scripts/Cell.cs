@@ -24,6 +24,7 @@ public class Cell : MonoBehaviour
     [SerializeField] private Sprite LeftDownUp;
     [SerializeField] private Sprite LeftDownRight;
     [SerializeField] private Sprite LeftUpRight;
+    [SerializeField] private GameObject invertedBadge;
 
     public enum BackType { Earth, Water, Poison, Rock, Inverter }
     public enum RootDirection { Up, Down, Left, Right }
@@ -37,7 +38,7 @@ public class Cell : MonoBehaviour
      */
 
     public bool InitDone;
-    public bool IsInverted;
+    public bool IsInverted { get; set; }
     public RootStatus Status;
     public GameObject Fx;
 
@@ -58,10 +59,12 @@ public class Cell : MonoBehaviour
                     case RootDirection.Left: rotation = 90; rootSprite.sprite = rootEdge; break;
                     case RootDirection.Right: rotation = 270; rootSprite.sprite = rootEdge; break;
                 }
+                invertedBadge.SetActive(IsInverted);
             }
             else
             {
                 rootSprite.sprite = null;
+                invertedBadge.SetActive(false);
             }
             rootSprite.transform.localRotation = Quaternion.Euler(0, 0, rotation);
         }
@@ -127,6 +130,7 @@ public class Cell : MonoBehaviour
 
     void ProcessDirectionSingle()
     {
+        invertedBadge.SetActive(false);
         switch ((previousPosition, directions[0]))
         {
 
@@ -196,6 +200,7 @@ public class Cell : MonoBehaviour
 
     void ProcessDirectionDouble()
     {
+        invertedBadge.SetActive(false);
         switch ((previousPosition, directions[0], directions[1]))
         {
 
@@ -291,6 +296,8 @@ public class Cell : MonoBehaviour
 
     void ProcessDirectionTriple()
     {
+        invertedBadge.SetActive(false);
+        rootSprite.color = Color.white;
         rootSprite.sprite = rootCross;
         rootSprite.transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
